@@ -1,0 +1,24 @@
+#Header
+    - count: long
+    - format: zero + minus + last_flag + min_width + precision
+    - output: str + len + zeros + spaces + spaces_after
+
+1. get flags and make a format struct out of them
+    - save data in format struct.
+
+2. get the value to be printed and covert it to string
+    - numbr_to_hexstr
+    - numbr_to_str
+    - char_to_str
+    - You need to calc the length of value.
+    - trim string if precision < length.
+
+3. use format and value to calculate spaces and zeros
+    - create helper func positive_or_zero(int);
+    - create helper func is_zero(); is_minus();
+4. print output
+    - print spaces if is_minus == false;
+    - print zeros if () is_zero == true;
+    - print value using length;
+    - print spaces if is_minus == true;
+    - increment count with each print and return it.
