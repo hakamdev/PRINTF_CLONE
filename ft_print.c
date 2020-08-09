@@ -27,7 +27,7 @@ void    pr_hex()
 {
     if (!dash_exists())
         g_cnt += putnchar(' ', g_data.spaces);
-    if (g_frmt.lastf == 'p')
+    if (is_pointer())
         g_cnt += putstr(g_data.value, g_factor);
     g_cnt += putnchar('0', g_data.zeros);
     g_cnt += putstr(g_data.value + g_factor,

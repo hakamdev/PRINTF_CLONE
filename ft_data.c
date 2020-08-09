@@ -27,12 +27,12 @@ void handle_number()
 void handle_hex()
 {
     size_t hexnum;
-    if (g_frmt.lastf == 'p')
+    if (is_pointer())
         hexnum = va_arg(g_vlist, size_t);
     else
         hexnum = va_arg(g_vlist, unsigned int);
     if (prec_exist() && g_frmt.prec == 0 && hexnum == (size_t)0)
-        g_data.value = sduplicate(g_frmt.lastf == 'p' ? "0x" : "");
+        g_data.value = sduplicate(is_pointer() ? "0x" : "");
     else
         numbr_tohex(&g_data.value, hexnum, -1);
     g_data.length = stringlen(g_data.value);

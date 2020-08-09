@@ -102,7 +102,7 @@ void    numbr_tostr(string *snum, long num)
 void    numbr_tohex(string *shex, size_t num, int index)
 {
     static string hex = "0123456789abcdef";
-    if (g_frmt.lastf == 'p' && index == -1)
+    if (is_pointer() && index == -1)
         *shex = sduplicate("0x");
     if (num == (size_t)0 && index == -1)
         *shex = join_char(*shex, '0', TRUE);

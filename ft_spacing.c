@@ -20,7 +20,7 @@ void sp_number()
 
 void sp_hex()
 {
-    g_factor = g_frmt.lastf == 'p' ? 2 : 0;
+    g_factor = is_pointer() ? 2 : 0;
     if (zero_exists() && !prec_exist())
         g_data.zeros = positive(g_frmt.minw - g_data.length);
     else if (prec_exist())
