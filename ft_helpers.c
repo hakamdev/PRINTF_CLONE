@@ -61,6 +61,14 @@ string  join_char(string s, char c, bool fre)
     return (newstr);
 }
 
+string  sduplicate(string s)
+{
+    if (s == NULL) return NULL;
+    string new_s = new_string(stringlen(s) + 1);
+    scopy(s, new_s);
+    return (new_s);
+}
+
 void    shorten_str(string *s, int newlen, bool fre)
 {
     string temp = NULL;

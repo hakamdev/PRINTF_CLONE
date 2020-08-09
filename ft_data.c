@@ -4,7 +4,7 @@ void handle_string()
 {
     g_data.value = va_arg(g_vlist, string);
     if (g_data.value == NULL)
-        g_data.value = strdup("(null)");
+        g_data.value = sduplicate("(null)");
     g_data.length = stringlen(g_data.value);
     if (prec_exist() && g_frmt.prec < g_data.length)
     {
@@ -18,7 +18,7 @@ void handle_number()
     long num = g_frmt.lastf == 'u'  ? (long)va_arg(g_vlist, unsigned)
                                     : (long)va_arg(g_vlist, int);
     if (prec_exist() && g_frmt.prec == 0 && num == 0)
-        g_data.value = strdup("");
+        g_data.value = sduplicate("");
     else
         numbr_tostr(&g_data.value, num);
     g_data.length = stringlen(g_data.value);
@@ -32,7 +32,7 @@ void handle_hex()
     else
         hexnum = va_arg(g_vlist, unsigned int);
     if (prec_exist() && g_frmt.prec == 0 && hexnum == (size_t)0)
-        g_data.value = strdup(g_frmt.lastf == 'p' ? "0x" : "");
+        g_data.value = sduplicate(g_frmt.lastf == 'p' ? "0x" : "");
     else
         numbr_tohex(&g_data.value, hexnum, -1);
     g_data.length = stringlen(g_data.value);

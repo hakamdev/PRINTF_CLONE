@@ -43,21 +43,22 @@ void        ft_spacing();
 void        ft_print();
 
 int         positive(int num);
-bool        contains(string s, char c);
-string      new_string(size_t len);
-int         stringlen(string s);
-void        scopy(string src, string dest);
-string      join_char(string s, char c, bool fre);
-void        shorten_str(string *s, int newlen, bool fre);
-void        numbr_tostr(string *snum, long num);
-char        to_upper(char c);
-void        numbr_tohex(string *shex, size_t num, int index);
 int         putnchar(char c, int n);
 int         putstr(string s, int len);
+int         stringlen(string s);
+void        shorten_str(string *s, int newlen, bool fre);
+void        numbr_tostr(string *snum, long num);
+void        numbr_tohex(string *shex, size_t num, int index);
+void        scopy(string src, string dest);
+string      new_string(size_t len);
+string      join_char(string s, char c, bool fre);
+string      sduplicate(string s);
+bool        contains(string s, char c);
 bool        zero_exists();
 bool        dash_exists();
 bool        prec_exist();
 bool        is_negative();
 bool        is_pointer();
+char        to_upper(char c);
 
 #endif
