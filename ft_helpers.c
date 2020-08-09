@@ -1,45 +1,5 @@
 #include "ft_printf.h"
 
-int     positive(int num)
-{
-    return num < 0 ? 0 : num;
-}
-
-bool    contains(string s, char c)
-{
-    while (*s)
-        if (*s++ == c)
-            return TRUE;
-    return FALSE;
-}
-
-string  new_string(size_t len)
-{
-    return (string)malloc(len * sizeof(char));
-}
-
-int     stringlen(string s)
-{
-    int i = 0;
-    while (s && s[i])
-        i++;
-    return (i);
-}
-
-char    to_upper(char c)
-{
-    return c >= 'a' && c <= 'z' ? c - 32 : c;
-}
-
-void    scopy(string src, string dest)
-{
-    if (!src || !dest)
-        return;
-    while (*src)
-        *dest++ = *src++;
-    *dest = '\0';
-}
-
 string  join_char(string s, char c, bool fre)
 {
     string newstr;
@@ -67,6 +27,20 @@ string  sduplicate(string s)
     string new_s = new_string(stringlen(s) + 1);
     scopy(s, new_s);
     return (new_s);
+}
+
+string  new_string(size_t len)
+{
+    return (string)malloc(len * sizeof(char));
+}
+
+void    scopy(string src, string dest)
+{
+    if (!src || !dest)
+        return;
+    while (*src)
+        *dest++ = *src++;
+    *dest = '\0';
 }
 
 void    shorten_str(string *s, int newlen, bool fre)
@@ -115,20 +89,6 @@ void    numbr_tohex(string *shex, size_t num, int index)
     }
 }
 
-int     putnchar(char c, int n)
-{
-    int i = 0;
-    while (i++ < n)
-        write(1, &c, 1);
-    return (n);
-}
-
-int     putstr(string s, int len)
-{
-    write(1, s, len);
-    return len;
-}
-
 bool    zero_exists()
 {
     return (g_frmt.zero && !g_frmt.dash);
@@ -154,5 +114,42 @@ bool    is_pointer()
     return (g_frmt.lastf == 'p');
 }
 
+bool    contains(string s, char c)
+{
+    while (*s)
+        if (*s++ == c)
+            return TRUE;
+    return FALSE;
+}
 
+int     positive(int num)
+{
+    return num < 0 ? 0 : num;
+}
 
+int     stringlen(string s)
+{
+    int i = 0;
+    while (s && s[i])
+        i++;
+    return (i);
+}
+
+int     putnchar(char c, int n)
+{
+    int i = 0;
+    while (i++ < n)
+        write(1, &c, 1);
+    return (n);
+}
+
+int     putstr(string s, int len)
+{
+    write(1, s, len);
+    return len;
+}
+
+char    to_upper(char c)
+{
+    return c >= 'a' && c <= 'z' ? c - 32 : c;
+}

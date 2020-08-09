@@ -11,17 +11,7 @@ int     get_flags(string format, string *flgs)
     return (i);
 }
 
-void    reset_format()
-{
-    g_frmt.zero = FALSE;
-    g_frmt.dash = FALSE;
-    g_frmt.dot = FALSE;
-    g_frmt.minw = 0;
-    g_frmt.prec = 0;
-    g_frmt.lastf = '\0';
-}
-
-int    handle_astrisk(int i, char flag)
+int     handle_astrisk(int i, char flag)
 {
     int     itemp;
     itemp = va_arg(g_vlist, int);
@@ -32,7 +22,7 @@ int    handle_astrisk(int i, char flag)
     return ++i;
 }
 
-int    handle_numbers(string flgs, int i, char flag)
+int     handle_numbers(string flgs, int i, char flag)
 {
     string  stemp = NULL;
     while (flgs[i] >= '0' && flgs[i] <= '9')
@@ -42,7 +32,7 @@ int    handle_numbers(string flgs, int i, char flag)
     return i;
 }
 
-int    handle_zerodash(string flgs, int i)
+int     handle_zerodash(string flgs, int i)
 {
     while (flgs[i] == '0' || flgs[i] == '-')
     {
@@ -53,10 +43,20 @@ int    handle_zerodash(string flgs, int i)
     return i;
 }
 
-int    handle_dot(int i)
+int     handle_dot(int i)
 {
     g_frmt.dot = TRUE;
     return ++i;
+}
+
+void    reset_format()
+{
+    g_frmt.zero = FALSE;
+    g_frmt.dash = FALSE;
+    g_frmt.dot = FALSE;
+    g_frmt.minw = 0;
+    g_frmt.prec = 0;
+    g_frmt.lastf = '\0';
 }
 
 void    setup_format(string flgs)

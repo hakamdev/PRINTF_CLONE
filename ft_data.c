@@ -11,6 +11,7 @@ void handle_string()
         shorten_str(&g_data.value, g_frmt.prec, FALSE);
         g_data.length = g_frmt.prec;
     }
+    g_data.should_free = TRUE;
 }
 
 void handle_number()
@@ -22,6 +23,7 @@ void handle_number()
     else
         numbr_tostr(&g_data.value, num);
     g_data.length = stringlen(g_data.value);
+    g_data.should_free = TRUE;
 }
 
 void handle_hex()
@@ -36,6 +38,7 @@ void handle_hex()
     else
         numbr_tohex(&g_data.value, hexnum, -1);
     g_data.length = stringlen(g_data.value);
+    g_data.should_free = TRUE;
 }
 
 void handle_char()
@@ -43,6 +46,7 @@ void handle_char()
     char c = g_frmt.lastf == '%' ? '%' : va_arg(g_vlist, int);
     g_data.value = join_char(NULL, c, FALSE);
     g_data.length = 1;
+    g_data.should_free = TRUE;
 }
 
 void reset_data()
@@ -51,6 +55,7 @@ void reset_data()
     g_data.length = 0;
     g_data.spaces = 0;
     g_data.zeros = 0;
+    g_data.should_free = FALSE;
 }
 
 void ft_data()

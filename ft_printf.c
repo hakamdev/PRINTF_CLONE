@@ -15,8 +15,8 @@ int ft_printf(const string format, ...)
             ft_print();
         }
         else
-            g_cnt += putnchar(format[i++], 1);
+            g_count += putnchar(format[i++], 1);
     }
     va_end(g_vlist);
-    return (g_cnt);
+    return (g_count);
 }
