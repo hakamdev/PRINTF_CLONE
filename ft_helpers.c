@@ -103,7 +103,7 @@ void    numbr_tohex(string *shex, size_t num, int index)
 {
     static string hex = "0123456789abcdef";
     if (g_frmt.lastf == 'p' && index == -1)
-        *shex = strdup("0x");
+        *shex = sduplicate("0x");
     if (num == (size_t)0 && index == -1)
         *shex = join_char(*shex, '0', TRUE);
     if (num > 0)
